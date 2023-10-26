@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9696b893a52c48e3af63f5fe3d102a84" Name="Diagram1" ZoomLevel="90">
+        <EntityTypeShape EntityType="moj2883_hospitalModel.sysdiagram" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="moj2883_hospitalModel.tbl_Awards" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="moj2883_hospitalModel.tbl_Doctors" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="moj2883_hospitalModel.tbl_Patient" Width="1.5" PointX="0.75" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="moj2883_hospitalModel.tbl_Research" Width="1.5" PointX="6.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="moj2883_hospitalModel.tbl_skills" Width="1.5" PointX="1.5" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="moj2883_hospitalModel.tbl_Visit" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="moj2883_hospitalModel.tbl_VisitPerDoctors" Width="1.5" PointX="6" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="moj2883_hospitalModel.tbl_VisitStatus" Width="1.5" PointX="0.75" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="moj2883_hospitalModel.tbl_VisitType" Width="1.5" PointX="0.5" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="moj2883_hospitalModel.View_Visit" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="moj2883_hospitalModel.View_VisitPerDoctors" Width="1.5" PointX="8.75" PointY="6.75" IsExpanded="true" />
+        <AssociationConnector Association="moj2883_hospitalModel.FK_tbl_Doctors_tbl_skills" ManuallyRouted="false" />
+        <AssociationConnector Association="moj2883_hospitalModel.FK_tbl_Visit_tbl_Doctors" ManuallyRouted="false" />
+        <AssociationConnector Association="moj2883_hospitalModel.FK_tbl_VisitPerDocters_tbl_VisitPerDocters" ManuallyRouted="false" />
+        <AssociationConnector Association="moj2883_hospitalModel.FK_tbl_Visit_tbl_Patient" ManuallyRouted="false" />
+        <AssociationConnector Association="moj2883_hospitalModel.FK_tbl_Visit_tbl_VisitStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="moj2883_hospitalModel.FK_tbl_Visit_tbl_VisitType" ManuallyRouted="false" />
+        <AssociationConnector Association="moj2883_hospitalModel.FK_tbl_VisitPerDocters_tbl_VisitType" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="moj2883_hospitalModel.tbl_comm" Width="1.5" PointX="4.375" PointY="9.75" />
+        <EntityTypeShape EntityType="moj2883_hospitalModel.tbl_Language" Width="1.5" PointX="6.375" PointY="17.75" />
+        <AssociationConnector Association="moj2883_hospitalModel.FK_tbl_comm_tbl_Language" />
+        <EntityTypeShape EntityType="moj2883_hospitalModel.View_Comm" Width="1.5" PointX="6.375" PointY="9.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

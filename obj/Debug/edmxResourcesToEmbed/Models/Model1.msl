@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="moj2883_hospitalModelStoreContainer" CdmEntityContainer="datap">
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="moj2883_hospitalModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Awards">
+      <EntityTypeMapping TypeName="moj2883_hospitalModel.tbl_Awards">
+        <MappingFragment StoreEntitySet="tbl-Awards">
+          <ScalarProperty Name="pkID" ColumnName="pkID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Doctors">
+      <EntityTypeMapping TypeName="moj2883_hospitalModel.tbl_Doctors">
+        <MappingFragment StoreEntitySet="tbl-Doctors">
+          <ScalarProperty Name="pkID" ColumnName="pkID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Family" ColumnName="Family" />
+          <ScalarProperty Name="fkSkill" ColumnName="fkSkill" />
+          <ScalarProperty Name="PersonalNum" ColumnName="PersonalNum" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Patient">
+      <EntityTypeMapping TypeName="moj2883_hospitalModel.tbl_Patient">
+        <MappingFragment StoreEntitySet="tbl-Patient">
+          <ScalarProperty Name="pkID" ColumnName="pkID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Family" ColumnName="Family" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="NationalCode" ColumnName="NationalCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Research">
+      <EntityTypeMapping TypeName="moj2883_hospitalModel.tbl_Research">
+        <MappingFragment StoreEntitySet="tbl-Research">
+          <ScalarProperty Name="pkID" ColumnName="pkID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_skills">
+      <EntityTypeMapping TypeName="moj2883_hospitalModel.tbl_skills">
+        <MappingFragment StoreEntitySet="tbl-skills">
+          <ScalarProperty Name="pkID" ColumnName="pkID" />
+          <ScalarProperty Name="skill" ColumnName="skill" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Visit">
+      <EntityTypeMapping TypeName="moj2883_hospitalModel.tbl_Visit">
+        <MappingFragment StoreEntitySet="tbl-Visit">
+          <ScalarProperty Name="pkID" ColumnName="pkID" />
+          <ScalarProperty Name="fkDocID" ColumnName="fkDocID" />
+          <ScalarProperty Name="SDate" ColumnName="SDate" />
+          <ScalarProperty Name="EDate" ColumnName="EDate" />
+          <ScalarProperty Name="fkPID" ColumnName="fkPID" />
+          <ScalarProperty Name="fkVTID" ColumnName="fkVTID" />
+          <ScalarProperty Name="fkVisitStatus" ColumnName="fkVisitStatus" />
+          <ScalarProperty Name="hashid" ColumnName="hashid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_VisitPerDoctors">
+      <EntityTypeMapping TypeName="moj2883_hospitalModel.tbl_VisitPerDoctors">
+        <MappingFragment StoreEntitySet="tbl-VisitPerDoctors">
+          <ScalarProperty Name="pkID" ColumnName="pkID" />
+          <ScalarProperty Name="fkDocID" ColumnName="fkDocID" />
+          <ScalarProperty Name="fkVisitID" ColumnName="fkVisitID" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_VisitStatus">
+      <EntityTypeMapping TypeName="moj2883_hospitalModel.tbl_VisitStatus">
+        <MappingFragment StoreEntitySet="tbl-VisitStatus">
+          <ScalarProperty Name="pkID" ColumnName="pkID" />
+          <ScalarProperty Name="VisitStatus" ColumnName="VisitStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_VisitType">
+      <EntityTypeMapping TypeName="moj2883_hospitalModel.tbl_VisitType">
+        <MappingFragment StoreEntitySet="tbl-VisitType">
+          <ScalarProperty Name="pkID" ColumnName="pkID" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_Visit">
+      <EntityTypeMapping TypeName="moj2883_hospitalModel.View_Visit">
+        <MappingFragment StoreEntitySet="View_Visit">
+          <ScalarProperty Name="pkID" ColumnName="pkID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Family" ColumnName="Family" />
+          <ScalarProperty Name="fkDocID" ColumnName="fkDocID" />
+          <ScalarProperty Name="SDate" ColumnName="SDate" />
+          <ScalarProperty Name="EDate" ColumnName="EDate" />
+          <ScalarProperty Name="fkPID" ColumnName="fkPID" />
+          <ScalarProperty Name="fkVTID" ColumnName="fkVTID" />
+          <ScalarProperty Name="PDate" ColumnName="PDate" />
+          <ScalarProperty Name="PTime" ColumnName="PTime" />
+          <ScalarProperty Name="pName" ColumnName="pName" />
+          <ScalarProperty Name="pFamily" ColumnName="pFamily" />
+          <ScalarProperty Name="pMobile" ColumnName="pMobile" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="fkVisitStatus" ColumnName="fkVisitStatus" />
+          <ScalarProperty Name="VisitStatus" ColumnName="VisitStatus" />
+          <ScalarProperty Name="hashid" ColumnName="hashid" />
+          <ScalarProperty Name="PNC" ColumnName="PNC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_VisitPerDoctors">
+      <EntityTypeMapping TypeName="moj2883_hospitalModel.View_VisitPerDoctors">
+        <MappingFragment StoreEntitySet="View_VisitPerDoctors">
+          <ScalarProperty Name="pkID" ColumnName="pkID" />
+          <ScalarProperty Name="fkDocID" ColumnName="fkDocID" />
+          <ScalarProperty Name="fkVisitID" ColumnName="fkVisitID" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+          <ScalarProperty Name="visit_type_ID" ColumnName="visit_type_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_comm">
+      <EntityTypeMapping TypeName="moj2883_hospitalModel.tbl_comm">
+        <MappingFragment StoreEntitySet="tbl_comm">
+          <ScalarProperty Name="fkLangID" ColumnName="fkLangID" />
+          <ScalarProperty Name="typee" ColumnName="typee" />
+          <ScalarProperty Name="dis" ColumnName="dis" />
+          <ScalarProperty Name="valuee" ColumnName="valuee" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="pkID" ColumnName="pkID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Language">
+      <EntityTypeMapping TypeName="moj2883_hospitalModel.tbl_Language">
+        <MappingFragment StoreEntitySet="tbl_Language">
+          <ScalarProperty Name="LangName" ColumnName="LangName" />
+          <ScalarProperty Name="Language" ColumnName="Language" />
+          <ScalarProperty Name="pkID" ColumnName="pkID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_Comm">
+      <EntityTypeMapping TypeName="moj2883_hospitalModel.View_Comm">
+        <MappingFragment StoreEntitySet="View_Comm">
+          <ScalarProperty Name="LangName" ColumnName="LangName" />
+          <ScalarProperty Name="Language" ColumnName="Language" />
+          <ScalarProperty Name="fkLangID" ColumnName="fkLangID" />
+          <ScalarProperty Name="typee" ColumnName="typee" />
+          <ScalarProperty Name="dis" ColumnName="dis" />
+          <ScalarProperty Name="valuee" ColumnName="valuee" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="pkID" ColumnName="pkID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

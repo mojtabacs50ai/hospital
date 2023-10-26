@@ -1,0 +1,907 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="moj2883_hospitalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tbl_comm">
+          <Key>
+            <PropertyRef Name="pkID" />
+          </Key>
+          <Property Name="pkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="valuee" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="dis" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="typee" Type="int" Nullable="false" />
+          <Property Name="fkLangID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Language">
+          <Key>
+            <PropertyRef Name="pkID" />
+          </Key>
+          <Property Name="pkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Language" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LangName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl-Awards">
+          <Key>
+            <PropertyRef Name="pkID" />
+          </Key>
+          <Property Name="pkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl-Doctors">
+          <Key>
+            <PropertyRef Name="pkID" />
+          </Key>
+          <Property Name="pkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Family" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="fkSkill" Type="int" Nullable="false" />
+          <Property Name="PersonalNum" Type="int" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl-Patient">
+          <Key>
+            <PropertyRef Name="pkID" />
+          </Key>
+          <Property Name="pkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Family" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Mobile" Type="char" MaxLength="11" Nullable="false" />
+          <Property Name="NationalCode" Type="char" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="tbl-Research">
+          <Key>
+            <PropertyRef Name="pkID" />
+          </Key>
+          <Property Name="pkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl-skills">
+          <Key>
+            <PropertyRef Name="pkID" />
+          </Key>
+          <Property Name="pkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="skill" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl-Visit">
+          <Key>
+            <PropertyRef Name="pkID" />
+          </Key>
+          <Property Name="pkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fkDocID" Type="int" Nullable="false" />
+          <Property Name="SDate" Type="datetime" Nullable="false" />
+          <Property Name="EDate" Type="datetime" />
+          <Property Name="fkPID" Type="int" />
+          <Property Name="fkVTID" Type="int" />
+          <Property Name="fkVisitStatus" Type="int" />
+          <Property Name="hashid" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tbl-VisitPerDoctors">
+          <Key>
+            <PropertyRef Name="pkID" />
+          </Key>
+          <Property Name="pkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fkDocID" Type="int" Nullable="false" />
+          <Property Name="fkVisitID" Type="int" Nullable="false" />
+          <Property Name="Duration" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl-VisitStatus">
+          <Key>
+            <PropertyRef Name="pkID" />
+          </Key>
+          <Property Name="pkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VisitStatus" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl-VisitType">
+          <Key>
+            <PropertyRef Name="pkID" />
+          </Key>
+          <Property Name="pkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'moj2883_hospital.dbo.View_Comm' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_Comm">
+          <Key>
+            <PropertyRef Name="pkID" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="valuee" />
+            <PropertyRef Name="dis" />
+            <PropertyRef Name="typee" />
+            <PropertyRef Name="fkLangID" />
+            <PropertyRef Name="Language" />
+            <PropertyRef Name="LangName" />
+          </Key>
+          <Property Name="pkID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="valuee" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="dis" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="typee" Type="int" Nullable="false" />
+          <Property Name="fkLangID" Type="int" Nullable="false" />
+          <Property Name="Language" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LangName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'moj2883_hospital.dbo.View_Visit' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_Visit">
+          <Key>
+            <PropertyRef Name="pkID" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Family" />
+            <PropertyRef Name="fkDocID" />
+            <PropertyRef Name="SDate" />
+            <PropertyRef Name="Type" />
+            <PropertyRef Name="VisitStatus" />
+          </Key>
+          <Property Name="pkID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Family" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="fkDocID" Type="int" Nullable="false" />
+          <Property Name="SDate" Type="datetime" Nullable="false" />
+          <Property Name="EDate" Type="datetime" />
+          <Property Name="fkPID" Type="int" />
+          <Property Name="fkVTID" Type="int" />
+          <Property Name="PDate" Type="nvarchar" MaxLength="10" />
+          <Property Name="PTime" Type="varchar" MaxLength="8" />
+          <Property Name="pName" Type="nvarchar" MaxLength="20" />
+          <Property Name="pFamily" Type="nvarchar" MaxLength="20" />
+          <Property Name="pMobile" Type="char" MaxLength="11" />
+          <Property Name="Type" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="fkVisitStatus" Type="int" />
+          <Property Name="VisitStatus" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="hashid" Type="nvarchar" MaxLength="100" />
+          <Property Name="PNC" Type="char" MaxLength="10" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'moj2883_hospital.dbo.View_VisitPerDoctors' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_VisitPerDoctors">
+          <Key>
+            <PropertyRef Name="pkID" />
+            <PropertyRef Name="fkDocID" />
+            <PropertyRef Name="fkVisitID" />
+            <PropertyRef Name="Type" />
+            <PropertyRef Name="Duration" />
+            <PropertyRef Name="visit_type_ID" />
+          </Key>
+          <Property Name="pkID" Type="int" Nullable="false" />
+          <Property Name="fkDocID" Type="int" Nullable="false" />
+          <Property Name="fkVisitID" Type="int" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Duration" Type="bigint" Nullable="false" />
+          <Property Name="visit_type_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_tbl_comm_tbl_Language">
+          <End Role="tbl_Language" Type="Self.tbl_Language" Multiplicity="1" />
+          <End Role="tbl_comm" Type="Self.tbl_comm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Language">
+              <PropertyRef Name="pkID" />
+            </Principal>
+            <Dependent Role="tbl_comm">
+              <PropertyRef Name="fkLangID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl-Doctors_tbl-skills">
+          <End Role="tbl-skills" Type="Self.tbl-skills" Multiplicity="1" />
+          <End Role="tbl-Doctors" Type="Self.tbl-Doctors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl-skills">
+              <PropertyRef Name="pkID" />
+            </Principal>
+            <Dependent Role="tbl-Doctors">
+              <PropertyRef Name="fkSkill" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl-Visit_tbl-Doctors">
+          <End Role="tbl-Doctors" Type="Self.tbl-Doctors" Multiplicity="1" />
+          <End Role="tbl-Visit" Type="Self.tbl-Visit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl-Doctors">
+              <PropertyRef Name="pkID" />
+            </Principal>
+            <Dependent Role="tbl-Visit">
+              <PropertyRef Name="fkDocID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl-Visit_tbl-Patient">
+          <End Role="tbl-Patient" Type="Self.tbl-Patient" Multiplicity="0..1" />
+          <End Role="tbl-Visit" Type="Self.tbl-Visit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl-Patient">
+              <PropertyRef Name="pkID" />
+            </Principal>
+            <Dependent Role="tbl-Visit">
+              <PropertyRef Name="fkPID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl-Visit_tbl-VisitStatus">
+          <End Role="tbl-VisitStatus" Type="Self.tbl-VisitStatus" Multiplicity="0..1" />
+          <End Role="tbl-Visit" Type="Self.tbl-Visit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl-VisitStatus">
+              <PropertyRef Name="pkID" />
+            </Principal>
+            <Dependent Role="tbl-Visit">
+              <PropertyRef Name="fkVisitStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl-Visit_tbl-VisitType">
+          <End Role="tbl-VisitType" Type="Self.tbl-VisitType" Multiplicity="0..1" />
+          <End Role="tbl-Visit" Type="Self.tbl-Visit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl-VisitType">
+              <PropertyRef Name="pkID" />
+            </Principal>
+            <Dependent Role="tbl-Visit">
+              <PropertyRef Name="fkVTID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl-VisitPerDocters_tbl-VisitPerDocters">
+          <End Role="tbl-Doctors" Type="Self.tbl-Doctors" Multiplicity="1" />
+          <End Role="tbl-VisitPerDoctors" Type="Self.tbl-VisitPerDoctors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl-Doctors">
+              <PropertyRef Name="pkID" />
+            </Principal>
+            <Dependent Role="tbl-VisitPerDoctors">
+              <PropertyRef Name="fkDocID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl-VisitPerDocters_tbl-VisitType">
+          <End Role="tbl-VisitType" Type="Self.tbl-VisitType" Multiplicity="1" />
+          <End Role="tbl-VisitPerDoctors" Type="Self.tbl-VisitPerDoctors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl-VisitType">
+              <PropertyRef Name="pkID" />
+            </Principal>
+            <Dependent Role="tbl-VisitPerDoctors">
+              <PropertyRef Name="fkVisitID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="moj2883_hospitalModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_comm" EntityType="Self.tbl_comm" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Language" EntityType="Self.tbl_Language" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl-Awards" EntityType="Self.tbl-Awards" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl-Doctors" EntityType="Self.tbl-Doctors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl-Patient" EntityType="Self.tbl-Patient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl-Research" EntityType="Self.tbl-Research" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl-skills" EntityType="Self.tbl-skills" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl-Visit" EntityType="Self.tbl-Visit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl-VisitPerDoctors" EntityType="Self.tbl-VisitPerDoctors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl-VisitStatus" EntityType="Self.tbl-VisitStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl-VisitType" EntityType="Self.tbl-VisitType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="View_Comm" EntityType="Self.View_Comm" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_Comm].[pkID] AS [pkID], 
+    [View_Comm].[Name] AS [Name], 
+    [View_Comm].[valuee] AS [valuee], 
+    [View_Comm].[dis] AS [dis], 
+    [View_Comm].[typee] AS [typee], 
+    [View_Comm].[fkLangID] AS [fkLangID], 
+    [View_Comm].[Language] AS [Language], 
+    [View_Comm].[LangName] AS [LangName]
+    FROM [dbo].[View_Comm] AS [View_Comm]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_Visit" EntityType="Self.View_Visit" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_Visit].[pkID] AS [pkID], 
+    [View_Visit].[Name] AS [Name], 
+    [View_Visit].[Family] AS [Family], 
+    [View_Visit].[fkDocID] AS [fkDocID], 
+    [View_Visit].[SDate] AS [SDate], 
+    [View_Visit].[EDate] AS [EDate], 
+    [View_Visit].[fkPID] AS [fkPID], 
+    [View_Visit].[fkVTID] AS [fkVTID], 
+    [View_Visit].[PDate] AS [PDate], 
+    [View_Visit].[PTime] AS [PTime], 
+    [View_Visit].[pName] AS [pName], 
+    [View_Visit].[pFamily] AS [pFamily], 
+    [View_Visit].[pMobile] AS [pMobile], 
+    [View_Visit].[Type] AS [Type], 
+    [View_Visit].[fkVisitStatus] AS [fkVisitStatus], 
+    [View_Visit].[VisitStatus] AS [VisitStatus], 
+    [View_Visit].[hashid] AS [hashid], 
+    [View_Visit].[PNC] AS [PNC]
+    FROM [dbo].[View_Visit] AS [View_Visit]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_VisitPerDoctors" EntityType="Self.View_VisitPerDoctors" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_VisitPerDoctors].[pkID] AS [pkID], 
+    [View_VisitPerDoctors].[fkDocID] AS [fkDocID], 
+    [View_VisitPerDoctors].[fkVisitID] AS [fkVisitID], 
+    [View_VisitPerDoctors].[Type] AS [Type], 
+    [View_VisitPerDoctors].[Duration] AS [Duration], 
+    [View_VisitPerDoctors].[visit_type_ID] AS [visit_type_ID]
+    FROM [dbo].[View_VisitPerDoctors] AS [View_VisitPerDoctors]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_tbl_comm_tbl_Language" Association="Self.FK_tbl_comm_tbl_Language">
+            <End Role="tbl_Language" EntitySet="tbl_Language" />
+            <End Role="tbl_comm" EntitySet="tbl_comm" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl-Doctors_tbl-skills" Association="Self.FK_tbl-Doctors_tbl-skills">
+            <End Role="tbl-skills" EntitySet="tbl-skills" />
+            <End Role="tbl-Doctors" EntitySet="tbl-Doctors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl-Visit_tbl-Doctors" Association="Self.FK_tbl-Visit_tbl-Doctors">
+            <End Role="tbl-Doctors" EntitySet="tbl-Doctors" />
+            <End Role="tbl-Visit" EntitySet="tbl-Visit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl-Visit_tbl-Patient" Association="Self.FK_tbl-Visit_tbl-Patient">
+            <End Role="tbl-Patient" EntitySet="tbl-Patient" />
+            <End Role="tbl-Visit" EntitySet="tbl-Visit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl-Visit_tbl-VisitStatus" Association="Self.FK_tbl-Visit_tbl-VisitStatus">
+            <End Role="tbl-VisitStatus" EntitySet="tbl-VisitStatus" />
+            <End Role="tbl-Visit" EntitySet="tbl-Visit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl-Visit_tbl-VisitType" Association="Self.FK_tbl-Visit_tbl-VisitType">
+            <End Role="tbl-VisitType" EntitySet="tbl-VisitType" />
+            <End Role="tbl-Visit" EntitySet="tbl-Visit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl-VisitPerDocters_tbl-VisitPerDocters" Association="Self.FK_tbl-VisitPerDocters_tbl-VisitPerDocters">
+            <End Role="tbl-Doctors" EntitySet="tbl-Doctors" />
+            <End Role="tbl-VisitPerDoctors" EntitySet="tbl-VisitPerDoctors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl-VisitPerDocters_tbl-VisitType" Association="Self.FK_tbl-VisitPerDocters_tbl-VisitType">
+            <End Role="tbl-VisitType" EntitySet="tbl-VisitType" />
+            <End Role="tbl-VisitPerDoctors" EntitySet="tbl-VisitPerDoctors" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="moj2883_hospitalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tbl_Awards">
+          <Key>
+            <PropertyRef Name="pkID" />
+          </Key>
+          <Property Name="pkID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Doctors">
+          <Key>
+            <PropertyRef Name="pkID" />
+          </Key>
+          <Property Name="pkID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Family" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fkSkill" Type="Int32" Nullable="false" />
+          <Property Name="PersonalNum" Type="Int32" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_skills" Relationship="Self.FK_tbl_Doctors_tbl_skills" FromRole="tbl_Doctors" ToRole="tbl_skills" />
+          <NavigationProperty Name="tbl_Visit" Relationship="Self.FK_tbl_Visit_tbl_Doctors" FromRole="tbl_Doctors" ToRole="tbl_Visit" />
+          <NavigationProperty Name="tbl_VisitPerDoctors" Relationship="Self.FK_tbl_VisitPerDocters_tbl_VisitPerDocters" FromRole="tbl_Doctors" ToRole="tbl_VisitPerDoctors" />
+        </EntityType>
+        <EntityType Name="tbl_Patient">
+          <Key>
+            <PropertyRef Name="pkID" />
+          </Key>
+          <Property Name="pkID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Family" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Mobile" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="NationalCode" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="tbl_Visit" Relationship="Self.FK_tbl_Visit_tbl_Patient" FromRole="tbl_Patient" ToRole="tbl_Visit" />
+        </EntityType>
+        <EntityType Name="tbl_Research">
+          <Key>
+            <PropertyRef Name="pkID" />
+          </Key>
+          <Property Name="pkID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_skills">
+          <Key>
+            <PropertyRef Name="pkID" />
+          </Key>
+          <Property Name="pkID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="skill" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tbl_Doctors" Relationship="Self.FK_tbl_Doctors_tbl_skills" FromRole="tbl_skills" ToRole="tbl_Doctors" />
+        </EntityType>
+        <EntityType Name="tbl_Visit">
+          <Key>
+            <PropertyRef Name="pkID" />
+          </Key>
+          <Property Name="pkID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fkDocID" Type="Int32" Nullable="false" />
+          <Property Name="SDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EDate" Type="DateTime" Precision="3" />
+          <Property Name="fkPID" Type="Int32" />
+          <Property Name="fkVTID" Type="Int32" />
+          <Property Name="fkVisitStatus" Type="Int32" />
+          <Property Name="hashid" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_Doctors" Relationship="Self.FK_tbl_Visit_tbl_Doctors" FromRole="tbl_Visit" ToRole="tbl_Doctors" />
+          <NavigationProperty Name="tbl_Patient" Relationship="Self.FK_tbl_Visit_tbl_Patient" FromRole="tbl_Visit" ToRole="tbl_Patient" />
+          <NavigationProperty Name="tbl_VisitStatus" Relationship="Self.FK_tbl_Visit_tbl_VisitStatus" FromRole="tbl_Visit" ToRole="tbl_VisitStatus" />
+          <NavigationProperty Name="tbl_VisitType" Relationship="Self.FK_tbl_Visit_tbl_VisitType" FromRole="tbl_Visit" ToRole="tbl_VisitType" />
+        </EntityType>
+        <EntityType Name="tbl_VisitPerDoctors">
+          <Key>
+            <PropertyRef Name="pkID" />
+          </Key>
+          <Property Name="pkID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fkDocID" Type="Int32" Nullable="false" />
+          <Property Name="fkVisitID" Type="Int32" Nullable="false" />
+          <Property Name="Duration" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="tbl_Doctors" Relationship="Self.FK_tbl_VisitPerDocters_tbl_VisitPerDocters" FromRole="tbl_VisitPerDoctors" ToRole="tbl_Doctors" />
+          <NavigationProperty Name="tbl_VisitType" Relationship="Self.FK_tbl_VisitPerDocters_tbl_VisitType" FromRole="tbl_VisitPerDoctors" ToRole="tbl_VisitType" />
+        </EntityType>
+        <EntityType Name="tbl_VisitStatus">
+          <Key>
+            <PropertyRef Name="pkID" />
+          </Key>
+          <Property Name="pkID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VisitStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tbl_Visit" Relationship="Self.FK_tbl_Visit_tbl_VisitStatus" FromRole="tbl_VisitStatus" ToRole="tbl_Visit" />
+        </EntityType>
+        <EntityType Name="tbl_VisitType">
+          <Key>
+            <PropertyRef Name="pkID" />
+          </Key>
+          <Property Name="pkID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tbl_Visit" Relationship="Self.FK_tbl_Visit_tbl_VisitType" FromRole="tbl_VisitType" ToRole="tbl_Visit" />
+          <NavigationProperty Name="tbl_VisitPerDoctors" Relationship="Self.FK_tbl_VisitPerDocters_tbl_VisitType" FromRole="tbl_VisitType" ToRole="tbl_VisitPerDoctors" />
+        </EntityType>
+        <EntityType Name="View_Visit">
+          <Key>
+            <PropertyRef Name="pkID" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Family" />
+            <PropertyRef Name="fkDocID" />
+            <PropertyRef Name="SDate" />
+            <PropertyRef Name="Type" />
+            <PropertyRef Name="VisitStatus" />
+          </Key>
+          <Property Name="pkID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Family" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fkDocID" Type="Int32" Nullable="false" />
+          <Property Name="SDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EDate" Type="DateTime" Precision="3" />
+          <Property Name="fkPID" Type="Int32" />
+          <Property Name="fkVTID" Type="Int32" />
+          <Property Name="PDate" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="PTime" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="pName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="pFamily" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="pMobile" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="Type" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fkVisitStatus" Type="Int32" />
+          <Property Name="VisitStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="hashid" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PNC" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="View_VisitPerDoctors">
+          <Key>
+            <PropertyRef Name="pkID" />
+            <PropertyRef Name="fkDocID" />
+            <PropertyRef Name="fkVisitID" />
+            <PropertyRef Name="Type" />
+            <PropertyRef Name="Duration" />
+            <PropertyRef Name="visit_type_ID" />
+          </Key>
+          <Property Name="pkID" Type="Int32" Nullable="false" />
+          <Property Name="fkDocID" Type="Int32" Nullable="false" />
+          <Property Name="fkVisitID" Type="Int32" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Duration" Type="Int64" Nullable="false" />
+          <Property Name="visit_type_ID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_tbl_Doctors_tbl_skills">
+          <End Role="tbl_skills" Type="Self.tbl_skills" Multiplicity="1" />
+          <End Role="tbl_Doctors" Type="Self.tbl_Doctors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_skills">
+              <PropertyRef Name="pkID" />
+            </Principal>
+            <Dependent Role="tbl_Doctors">
+              <PropertyRef Name="fkSkill" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Visit_tbl_Doctors">
+          <End Role="tbl_Doctors" Type="Self.tbl_Doctors" Multiplicity="1" />
+          <End Role="tbl_Visit" Type="Self.tbl_Visit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Doctors">
+              <PropertyRef Name="pkID" />
+            </Principal>
+            <Dependent Role="tbl_Visit">
+              <PropertyRef Name="fkDocID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_VisitPerDocters_tbl_VisitPerDocters">
+          <End Role="tbl_Doctors" Type="Self.tbl_Doctors" Multiplicity="1" />
+          <End Role="tbl_VisitPerDoctors" Type="Self.tbl_VisitPerDoctors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Doctors">
+              <PropertyRef Name="pkID" />
+            </Principal>
+            <Dependent Role="tbl_VisitPerDoctors">
+              <PropertyRef Name="fkDocID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Visit_tbl_Patient">
+          <End Role="tbl_Patient" Type="Self.tbl_Patient" Multiplicity="0..1" />
+          <End Role="tbl_Visit" Type="Self.tbl_Visit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Patient">
+              <PropertyRef Name="pkID" />
+            </Principal>
+            <Dependent Role="tbl_Visit">
+              <PropertyRef Name="fkPID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Visit_tbl_VisitStatus">
+          <End Role="tbl_VisitStatus" Type="Self.tbl_VisitStatus" Multiplicity="0..1" />
+          <End Role="tbl_Visit" Type="Self.tbl_Visit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_VisitStatus">
+              <PropertyRef Name="pkID" />
+            </Principal>
+            <Dependent Role="tbl_Visit">
+              <PropertyRef Name="fkVisitStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Visit_tbl_VisitType">
+          <End Role="tbl_VisitType" Type="Self.tbl_VisitType" Multiplicity="0..1" />
+          <End Role="tbl_Visit" Type="Self.tbl_Visit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_VisitType">
+              <PropertyRef Name="pkID" />
+            </Principal>
+            <Dependent Role="tbl_Visit">
+              <PropertyRef Name="fkVTID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_VisitPerDocters_tbl_VisitType">
+          <End Role="tbl_VisitType" Type="Self.tbl_VisitType" Multiplicity="1" />
+          <End Role="tbl_VisitPerDoctors" Type="Self.tbl_VisitPerDoctors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_VisitType">
+              <PropertyRef Name="pkID" />
+            </Principal>
+            <Dependent Role="tbl_VisitPerDoctors">
+              <PropertyRef Name="fkVisitID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="datap" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="tbl_Awards" EntityType="Self.tbl_Awards" />
+          <EntitySet Name="tbl_Doctors" EntityType="Self.tbl_Doctors" />
+          <EntitySet Name="tbl_Patient" EntityType="Self.tbl_Patient" />
+          <EntitySet Name="tbl_Research" EntityType="Self.tbl_Research" />
+          <EntitySet Name="tbl_skills" EntityType="Self.tbl_skills" />
+          <EntitySet Name="tbl_Visit" EntityType="Self.tbl_Visit" />
+          <EntitySet Name="tbl_VisitPerDoctors" EntityType="Self.tbl_VisitPerDoctors" />
+          <EntitySet Name="tbl_VisitStatus" EntityType="Self.tbl_VisitStatus" />
+          <EntitySet Name="tbl_VisitType" EntityType="Self.tbl_VisitType" />
+          <EntitySet Name="View_Visit" EntityType="Self.View_Visit" />
+          <EntitySet Name="View_VisitPerDoctors" EntityType="Self.View_VisitPerDoctors" />
+          <AssociationSet Name="FK_tbl_Doctors_tbl_skills" Association="Self.FK_tbl_Doctors_tbl_skills">
+            <End Role="tbl_skills" EntitySet="tbl_skills" />
+            <End Role="tbl_Doctors" EntitySet="tbl_Doctors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Visit_tbl_Doctors" Association="Self.FK_tbl_Visit_tbl_Doctors">
+            <End Role="tbl_Doctors" EntitySet="tbl_Doctors" />
+            <End Role="tbl_Visit" EntitySet="tbl_Visit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_VisitPerDocters_tbl_VisitPerDocters" Association="Self.FK_tbl_VisitPerDocters_tbl_VisitPerDocters">
+            <End Role="tbl_Doctors" EntitySet="tbl_Doctors" />
+            <End Role="tbl_VisitPerDoctors" EntitySet="tbl_VisitPerDoctors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Visit_tbl_Patient" Association="Self.FK_tbl_Visit_tbl_Patient">
+            <End Role="tbl_Patient" EntitySet="tbl_Patient" />
+            <End Role="tbl_Visit" EntitySet="tbl_Visit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Visit_tbl_VisitStatus" Association="Self.FK_tbl_Visit_tbl_VisitStatus">
+            <End Role="tbl_VisitStatus" EntitySet="tbl_VisitStatus" />
+            <End Role="tbl_Visit" EntitySet="tbl_Visit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Visit_tbl_VisitType" Association="Self.FK_tbl_Visit_tbl_VisitType">
+            <End Role="tbl_VisitType" EntitySet="tbl_VisitType" />
+            <End Role="tbl_Visit" EntitySet="tbl_Visit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_VisitPerDocters_tbl_VisitType" Association="Self.FK_tbl_VisitPerDocters_tbl_VisitType">
+            <End Role="tbl_VisitType" EntitySet="tbl_VisitType" />
+            <End Role="tbl_VisitPerDoctors" EntitySet="tbl_VisitPerDoctors" />
+          </AssociationSet>
+          <EntitySet Name="tbl_comm" EntityType="moj2883_hospitalModel.tbl_comm" />
+          <EntitySet Name="tbl_Language" EntityType="moj2883_hospitalModel.tbl_Language" />
+          <AssociationSet Name="FK_tbl_comm_tbl_Language" Association="moj2883_hospitalModel.FK_tbl_comm_tbl_Language">
+            <End Role="tbl_Language" EntitySet="tbl_Language" />
+            <End Role="tbl_comm" EntitySet="tbl_comm" />
+          </AssociationSet>
+          <EntitySet Name="View_Comm" EntityType="moj2883_hospitalModel.View_Comm" />
+        </EntityContainer>
+        <EntityType Name="tbl_comm">
+          <Key>
+            <PropertyRef Name="pkID" />
+          </Key>
+          <Property Name="pkID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="valuee" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="dis" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="typee" Type="Int32" Nullable="false" />
+          <Property Name="fkLangID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tbl_Language" Relationship="moj2883_hospitalModel.FK_tbl_comm_tbl_Language" FromRole="tbl_comm" ToRole="tbl_Language" />
+        </EntityType>
+        <EntityType Name="tbl_Language">
+          <Key>
+            <PropertyRef Name="pkID" />
+          </Key>
+          <Property Name="pkID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Language" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LangName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_comm" Relationship="moj2883_hospitalModel.FK_tbl_comm_tbl_Language" FromRole="tbl_Language" ToRole="tbl_comm" />
+        </EntityType>
+        <Association Name="FK_tbl_comm_tbl_Language">
+          <End Type="moj2883_hospitalModel.tbl_Language" Role="tbl_Language" Multiplicity="1" />
+          <End Type="moj2883_hospitalModel.tbl_comm" Role="tbl_comm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Language">
+              <PropertyRef Name="pkID" />
+            </Principal>
+            <Dependent Role="tbl_comm">
+              <PropertyRef Name="fkLangID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="View_Comm">
+          <Key>
+            <PropertyRef Name="pkID" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="valuee" />
+            <PropertyRef Name="dis" />
+            <PropertyRef Name="typee" />
+            <PropertyRef Name="fkLangID" />
+            <PropertyRef Name="Language" />
+            <PropertyRef Name="LangName" />
+          </Key>
+          <Property Name="pkID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="valuee" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="dis" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="typee" Type="Int32" Nullable="false" />
+          <Property Name="fkLangID" Type="Int32" Nullable="false" />
+          <Property Name="Language" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LangName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="moj2883_hospitalModelStoreContainer" CdmEntityContainer="datap">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="moj2883_hospitalModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Awards">
+            <EntityTypeMapping TypeName="moj2883_hospitalModel.tbl_Awards">
+              <MappingFragment StoreEntitySet="tbl-Awards">
+                <ScalarProperty Name="pkID" ColumnName="pkID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Doctors">
+            <EntityTypeMapping TypeName="moj2883_hospitalModel.tbl_Doctors">
+              <MappingFragment StoreEntitySet="tbl-Doctors">
+                <ScalarProperty Name="pkID" ColumnName="pkID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Family" ColumnName="Family" />
+                <ScalarProperty Name="fkSkill" ColumnName="fkSkill" />
+                <ScalarProperty Name="PersonalNum" ColumnName="PersonalNum" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Patient">
+            <EntityTypeMapping TypeName="moj2883_hospitalModel.tbl_Patient">
+              <MappingFragment StoreEntitySet="tbl-Patient">
+                <ScalarProperty Name="pkID" ColumnName="pkID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Family" ColumnName="Family" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="NationalCode" ColumnName="NationalCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Research">
+            <EntityTypeMapping TypeName="moj2883_hospitalModel.tbl_Research">
+              <MappingFragment StoreEntitySet="tbl-Research">
+                <ScalarProperty Name="pkID" ColumnName="pkID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_skills">
+            <EntityTypeMapping TypeName="moj2883_hospitalModel.tbl_skills">
+              <MappingFragment StoreEntitySet="tbl-skills">
+                <ScalarProperty Name="pkID" ColumnName="pkID" />
+                <ScalarProperty Name="skill" ColumnName="skill" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Visit">
+            <EntityTypeMapping TypeName="moj2883_hospitalModel.tbl_Visit">
+              <MappingFragment StoreEntitySet="tbl-Visit">
+                <ScalarProperty Name="pkID" ColumnName="pkID" />
+                <ScalarProperty Name="fkDocID" ColumnName="fkDocID" />
+                <ScalarProperty Name="SDate" ColumnName="SDate" />
+                <ScalarProperty Name="EDate" ColumnName="EDate" />
+                <ScalarProperty Name="fkPID" ColumnName="fkPID" />
+                <ScalarProperty Name="fkVTID" ColumnName="fkVTID" />
+                <ScalarProperty Name="fkVisitStatus" ColumnName="fkVisitStatus" />
+                <ScalarProperty Name="hashid" ColumnName="hashid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_VisitPerDoctors">
+            <EntityTypeMapping TypeName="moj2883_hospitalModel.tbl_VisitPerDoctors">
+              <MappingFragment StoreEntitySet="tbl-VisitPerDoctors">
+                <ScalarProperty Name="pkID" ColumnName="pkID" />
+                <ScalarProperty Name="fkDocID" ColumnName="fkDocID" />
+                <ScalarProperty Name="fkVisitID" ColumnName="fkVisitID" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_VisitStatus">
+            <EntityTypeMapping TypeName="moj2883_hospitalModel.tbl_VisitStatus">
+              <MappingFragment StoreEntitySet="tbl-VisitStatus">
+                <ScalarProperty Name="pkID" ColumnName="pkID" />
+                <ScalarProperty Name="VisitStatus" ColumnName="VisitStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_VisitType">
+            <EntityTypeMapping TypeName="moj2883_hospitalModel.tbl_VisitType">
+              <MappingFragment StoreEntitySet="tbl-VisitType">
+                <ScalarProperty Name="pkID" ColumnName="pkID" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Visit">
+            <EntityTypeMapping TypeName="moj2883_hospitalModel.View_Visit">
+              <MappingFragment StoreEntitySet="View_Visit">
+                <ScalarProperty Name="pkID" ColumnName="pkID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Family" ColumnName="Family" />
+                <ScalarProperty Name="fkDocID" ColumnName="fkDocID" />
+                <ScalarProperty Name="SDate" ColumnName="SDate" />
+                <ScalarProperty Name="EDate" ColumnName="EDate" />
+                <ScalarProperty Name="fkPID" ColumnName="fkPID" />
+                <ScalarProperty Name="fkVTID" ColumnName="fkVTID" />
+                <ScalarProperty Name="PDate" ColumnName="PDate" />
+                <ScalarProperty Name="PTime" ColumnName="PTime" />
+                <ScalarProperty Name="pName" ColumnName="pName" />
+                <ScalarProperty Name="pFamily" ColumnName="pFamily" />
+                <ScalarProperty Name="pMobile" ColumnName="pMobile" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="fkVisitStatus" ColumnName="fkVisitStatus" />
+                <ScalarProperty Name="VisitStatus" ColumnName="VisitStatus" />
+                <ScalarProperty Name="hashid" ColumnName="hashid" />
+                <ScalarProperty Name="PNC" ColumnName="PNC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_VisitPerDoctors">
+            <EntityTypeMapping TypeName="moj2883_hospitalModel.View_VisitPerDoctors">
+              <MappingFragment StoreEntitySet="View_VisitPerDoctors">
+                <ScalarProperty Name="pkID" ColumnName="pkID" />
+                <ScalarProperty Name="fkDocID" ColumnName="fkDocID" />
+                <ScalarProperty Name="fkVisitID" ColumnName="fkVisitID" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="visit_type_ID" ColumnName="visit_type_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_comm">
+            <EntityTypeMapping TypeName="moj2883_hospitalModel.tbl_comm">
+              <MappingFragment StoreEntitySet="tbl_comm">
+                <ScalarProperty Name="fkLangID" ColumnName="fkLangID" />
+                <ScalarProperty Name="typee" ColumnName="typee" />
+                <ScalarProperty Name="dis" ColumnName="dis" />
+                <ScalarProperty Name="valuee" ColumnName="valuee" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="pkID" ColumnName="pkID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Language">
+            <EntityTypeMapping TypeName="moj2883_hospitalModel.tbl_Language">
+              <MappingFragment StoreEntitySet="tbl_Language">
+                <ScalarProperty Name="LangName" ColumnName="LangName" />
+                <ScalarProperty Name="Language" ColumnName="Language" />
+                <ScalarProperty Name="pkID" ColumnName="pkID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Comm">
+            <EntityTypeMapping TypeName="moj2883_hospitalModel.View_Comm">
+              <MappingFragment StoreEntitySet="View_Comm">
+                <ScalarProperty Name="LangName" ColumnName="LangName" />
+                <ScalarProperty Name="Language" ColumnName="Language" />
+                <ScalarProperty Name="fkLangID" ColumnName="fkLangID" />
+                <ScalarProperty Name="typee" ColumnName="typee" />
+                <ScalarProperty Name="dis" ColumnName="dis" />
+                <ScalarProperty Name="valuee" ColumnName="valuee" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="pkID" ColumnName="pkID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
